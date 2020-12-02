@@ -3,17 +3,15 @@ package book.creationDesignPatterns.factoryMethod.button;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
-public class WindowsButton implements IButton, IButtonText {
-
-    private static final String WINDOWS_BUTTON_TXT = "Windows";
+public class WindowsButton implements IButton {
 
     @Override
     public void render() {
-        log.debug(String.format(RENDER_TXT, WINDOWS_BUTTON_TXT));
+        log.debug("Render a Windows button.");
     }
 
     @Override
     public void onClick(String action) {
-        log.debug(String.format(ACTION_TXT, WINDOWS_BUTTON_TXT));
+        log.debug("Click on Windows button.");
     }
 }
