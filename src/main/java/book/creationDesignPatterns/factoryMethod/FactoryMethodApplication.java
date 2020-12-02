@@ -8,13 +8,13 @@ import book.creationDesignPatterns.factoryMethod.dialog.WindowsDialog;
 public class FactoryMethodApplication {
 
     private Dialog dialog;
-    private static final String SYSTEM_CONF_WINDOWS = "Windows";
-    private static final String SYSTEM_CONF_HTML = "HTML";
 
     public static void main(String[] args) {
         FactoryMethodApplication application = new FactoryMethodApplication();
         try {
-            application.initialize(SYSTEM_CONF_WINDOWS);
+            application.initialize("Windows");
+            application.dialog.render();
+            application.initialize("HTML");
             application.dialog.render();
         } catch (DialogException ex) {
             ex.printStackTrace();
@@ -22,9 +22,9 @@ public class FactoryMethodApplication {
     }
 
     public void initialize(String systemConfiguration) throws DialogException {
-        if (systemConfiguration.equals(SYSTEM_CONF_WINDOWS)) {
+        if (systemConfiguration.equals("Windows")) {
             dialog = new WindowsDialog();
-        } else if (systemConfiguration.equals(SYSTEM_CONF_HTML)) {
+        } else if (systemConfiguration.equals("HTML")) {
             dialog = new WebDialog();
         } else {
             throw new DialogException("Unknown operation system!");
